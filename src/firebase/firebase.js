@@ -22,15 +22,9 @@ database.ref().set({
     city: 'Kwidzyn',
     country: "Poland"
   }
+}).then(() => {
+  console.log('Database updated')
+}).catch(err => {
+  console.log('Something went wrong')
 })
 
-database.ref('age').set(22)
-database.ref('location/city').set('Malbork')
-
-// attribiutes
-// height
-// weight
-database.ref('attribiutes').set({
-  height: 183,
-  weight: 90
-})
