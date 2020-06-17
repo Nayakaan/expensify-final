@@ -12,6 +12,25 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-firebase.database().ref().set({
-  name: 'Radek Jedrej'
+const database = firebase.database();
+
+database.ref().set({
+  name: 'Radek Jedrej',
+  age: 32,
+  isSingle: true,
+  location: {
+    city: 'Kwidzyn',
+    country: "Poland"
+  }
+})
+
+database.ref('age').set(22)
+database.ref('location/city').set('Malbork')
+
+// attribiutes
+// height
+// weight
+database.ref('attribiutes').set({
+  height: 183,
+  weight: 90
 })
