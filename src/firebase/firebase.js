@@ -14,17 +14,25 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database.ref().set({
-  name: 'Radek Jedrej',
-  age: 32,
-  isSingle: true,
-  location: {
-    city: 'Kwidzyn',
-    country: "Poland"
-  }
-}).then(() => {
-  console.log('Database updated')
-}).catch(err => {
-  console.log('Something went wrong')
-})
+// database.ref().set({
+//   name: 'Radek Jedrej',
+//   age: 32,
+//   isSingle: true,
+//   location: {
+//     city: 'Kwidzyn',
+//     country: "Poland"
+//   }
+// }).then(() => {
+//   console.log('Database updated')
+// }).catch(err => {
+//   console.log('Something went wrong')
+// })
 
+database.ref('isSingle')
+  .remove()
+  .then(() => {
+    console.log('Data Was Removed')
+  })
+  .catch(err => {
+    console.log(err)
+  })
