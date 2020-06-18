@@ -14,27 +14,42 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
+// database.ref('expenses')
+//   .once('value')
+//   .then((snapshot) => {
+//     const expenses = [];
 
-database.ref('expenses').push({
-  description: 'Course Topic!',
-  note: 'React, Python',
-  amount: 2450,
-  createdAt: 123987
-});
+//     snapshot.forEach((childSnapshot) => {
+//       expenses.push({
+//         id: childSnapshot.key,
+//         ...childSnapshot.val()
+//       })
+//     })
+
+//     console.log(expenses);
+//   })
+
+  database.ref('expenses')
+  .on('value', (snapshot) => {
+    const expenses = [];
+
+    snapshot.forEach((childSnapshot) => {
+      expenses.push({
+        id: childSnapshot.key,
+        ...childSnapshot.val()
+      })
+    })
+
+    console.log(expenses);
+  })
 
 // database.ref('expenses').push({
-//   description: 'Game Topic!',
+//   description: 'Course Topic!',
 //   note: 'React, Python',
-//   amount: 350,
-//   createdAt: 13987
+//   amount: 2450,
+//   createdAt: 123987
 // });
 
-// database.ref('expenses').push({
-//   description: 'React Topic!',
-//   note: 'React, Python',
-//   amount: 22450,
-//   createdAt: 1244987
-// });
 
 
 // const notes = [{
